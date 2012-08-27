@@ -1,0 +1,34 @@
+simparser.pl is a tool that can decode SIM traffic created by the HTerm
+application. Once HTerm has received some traffic, press the arrow button
+next to "Save output", and set the storage format to "Hex". Enable the
+Timestamps tick box. Now, save the .log file to the same directory as
+simparser.pl.
+
+Then, open the file in a text editor and add a header with no empty lines,
+ending in a single empty line. (If you don't want to add a header, prepend the
+actual data with a single empty line.) For example, the top of the file may now
+look like this:
+
+  Date: 13 december 2011
+  With: RebelSIM, HTerm
+  ME: Nokia 3310 (1)
+  Baud rate: 8431
+
+  17:13:02.197:
+  00FF
+  17:13:02.197:
+  00
+  [..]
+
+Then, run:
+
+  simparser.pl <filename>
+
+For example:
+  simparser.pl output_2011-12-13_17-15-06.log
+
+The simparser will first write your header to standard out, followed by a
+parsing of the protocol.
+
+Written by Sjors Gielen <s.gielen@student.ru.nl> in 2011-2012 for the "SIM
+Toolkit In Practice" bachelor thesis.
